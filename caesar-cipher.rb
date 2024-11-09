@@ -1,9 +1,7 @@
 def caesar_cipher(word, length)
   converted_word = []
   word.each_byte do |char|
-    unless char >= 65 && char <= 122 || char >= 97 && char <= 122
-      converted_word << char.chr
-    else
+    if ((char >= 65) && (char <= 122)) || (char >= 97 && char <= 122)
       converted_char = char + length
       if char.chr == char.chr.upcase && converted_char > 90
         converted_char = (converted_char - 90) + 64
@@ -14,10 +12,12 @@ def caesar_cipher(word, length)
       else
         converted_word << converted_char.chr
       end
-    end 
+    else
+      converted_word << char.chr
+    end
   end
 
   converted_word.join
 end
 
-caesar_cipher("OdinProject", 5)
+caesar_cipher('OdinProject', 5)
